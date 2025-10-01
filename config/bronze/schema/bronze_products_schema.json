@@ -1,0 +1,104 @@
+{
+  "table_name": "bronze_products",
+  "source_system": "product_catalog",
+  "source_type": "file",
+  "file_format": "parquet",
+  "file_path": "raw/products.parquet",
+  "description": "Raw product catalog data from product management system",
+  "primary_keys": ["product_id"],
+  "partition_by": ["ingestion_date"],
+  "columns": [
+    {
+      "name": "product_id",
+      "datatype": "long",
+      "nullable": false,
+      "description": "Unique identifier for the product"
+    },
+    {
+      "name": "product_name",
+      "datatype": "string",
+      "nullable": false,
+      "description": "Product name"
+    },
+    {
+      "name": "category",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Product category"
+    },
+    {
+      "name": "subcategory",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Product subcategory"
+    },
+    {
+      "name": "brand",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Product brand"
+    },
+    {
+      "name": "unit_price",
+      "datatype": "decimal(10,2)",
+      "nullable": false,
+      "description": "Current unit price"
+    },
+    {
+      "name": "cost",
+      "datatype": "decimal(10,2)",
+      "nullable": true,
+      "description": "Product cost"
+    },
+    {
+      "name": "description",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Product description"
+    },
+    {
+      "name": "weight_kg",
+      "datatype": "decimal(8,2)",
+      "nullable": true,
+      "description": "Product weight in kilograms"
+    },
+    {
+      "name": "is_active",
+      "datatype": "boolean",
+      "nullable": true,
+      "description": "Whether product is currently active"
+    },
+    {
+      "name": "created_date",
+      "datatype": "date",
+      "nullable": true,
+      "description": "Date product was created in system"
+    }
+  ],
+  "metadata_columns": [
+    {
+      "name": "ingestion_timestamp",
+      "datatype": "timestamp",
+      "nullable": false,
+      "description": "Timestamp when record was ingested into Bronze layer"
+    },
+    {
+      "name": "ingestion_date",
+      "datatype": "date",
+      "nullable": false,
+      "description": "Date when record was ingested (for partitioning)"
+    },
+    {
+      "name": "source_file",
+      "datatype": "string",
+      "nullable": false,
+      "description": "Name of source file"
+    },
+    {
+      "name": "record_source",
+      "datatype": "string",
+      "nullable": false,
+      "description": "Source system identifier"
+    }
+  ]
+}

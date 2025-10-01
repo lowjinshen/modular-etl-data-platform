@@ -1,0 +1,136 @@
+{
+  "table_name": "bronze_orders",
+  "source_system": "order_management",
+  "source_type": "file",
+  "file_format": "csv",
+  "file_path": "raw/orders.csv",
+  "delimiter": "|",
+  "header": true,
+  "description": "Raw order transactions from order management system",
+  "primary_keys": ["order_id"],
+  "partition_by": ["ingestion_date"],
+  "columns": [
+    {
+      "name": "order_id",
+      "datatype": "long",
+      "nullable": false,
+      "description": "Unique identifier for the order"
+    },
+    {
+      "name": "customer_id",
+      "datatype": "long",
+      "nullable": false,
+      "description": "Foreign key to customer"
+    },
+    {
+      "name": "order_date",
+      "datatype": "date",
+      "nullable": false,
+      "description": "Date the order was placed"
+    },
+    {
+      "name": "order_time",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Time the order was placed (HH:MM:SS format)"
+    },
+    {
+      "name": "order_status",
+      "datatype": "string",
+      "nullable": false,
+      "description": "Current status of the order"
+    },
+    {
+      "name": "payment_method",
+      "datatype": "string",
+      "nullable": false,
+      "description": "Payment method used"
+    },
+    {
+      "name": "shipping_address",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Shipping street address"
+    },
+    {
+      "name": "shipping_city",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Shipping city"
+    },
+    {
+      "name": "shipping_state",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Shipping state"
+    },
+    {
+      "name": "shipping_postal_code",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Shipping postal code"
+    },
+    {
+      "name": "order_total",
+      "datatype": "decimal(10,2)",
+      "nullable": true,
+      "description": "Total order amount including tax and shipping"
+    },
+    {
+      "name": "tax_amount",
+      "datatype": "decimal(10,2)",
+      "nullable": true,
+      "description": "Tax amount"
+    },
+    {
+      "name": "shipping_fee",
+      "datatype": "decimal(10,2)",
+      "nullable": true,
+      "description": "Shipping fee"
+    },
+    {
+      "name": "discount_code",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Discount code applied"
+    },
+    {
+      "name": "discount_amount",
+      "datatype": "decimal(10,2)",
+      "nullable": true,
+      "description": "Discount amount applied"
+    },
+    {
+      "name": "notes",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Order notes or comments"
+    }
+  ],
+  "metadata_columns": [
+    {
+      "name": "ingestion_timestamp",
+      "datatype": "timestamp",
+      "nullable": false,
+      "description": "Timestamp when record was ingested into Bronze layer"
+    },
+    {
+      "name": "ingestion_date",
+      "datatype": "date",
+      "nullable": false,
+      "description": "Date when record was ingested (for partitioning)"
+    },
+    {
+      "name": "source_file",
+      "datatype": "string",
+      "nullable": false,
+      "description": "Name of source file"
+    },
+    {
+      "name": "record_source",
+      "datatype": "string",
+      "nullable": false,
+      "description": "Source system identifier"
+    }
+  ]
+}

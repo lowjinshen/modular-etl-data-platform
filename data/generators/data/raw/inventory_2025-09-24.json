@@ -1,0 +1,902 @@
+[
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 1,
+    "quantity_on_hand": 522,
+    "quantity_reserved": 59,
+    "reorder_point": 92,
+    "warehouse_location": "WH-A",
+    "last_restock_date": "2025-09-02"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 2,
+    "quantity_on_hand": 307,
+    "quantity_reserved": 64,
+    "reorder_point": 23,
+    "warehouse_location": "WH-A",
+    "last_restock_date": "2025-09-23"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 3,
+    "quantity_on_hand": 758,
+    "quantity_reserved": 83,
+    "reorder_point": 56,
+    "warehouse_location": "WH-B",
+    "last_restock_date": "2025-09-02"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 4,
+    "quantity_on_hand": 954,
+    "quantity_reserved": 88,
+    "reorder_point": 70,
+    "warehouse_location": "WH-B",
+    "last_restock_date": "2025-09-10"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 5,
+    "quantity_on_hand": 425,
+    "quantity_reserved": 46,
+    "reorder_point": 30,
+    "warehouse_location": "WH-D",
+    "last_restock_date": "2025-08-31"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 6,
+    "quantity_on_hand": 643,
+    "quantity_reserved": 20,
+    "reorder_point": 86,
+    "warehouse_location": "WH-C",
+    "last_restock_date": "2025-09-11"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 7,
+    "quantity_on_hand": 767,
+    "quantity_reserved": 69,
+    "reorder_point": 60,
+    "warehouse_location": "WH-D",
+    "last_restock_date": "2025-09-15"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 8,
+    "quantity_on_hand": 480,
+    "quantity_reserved": 89,
+    "reorder_point": 17,
+    "warehouse_location": "WH-C",
+    "last_restock_date": "2025-09-18"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 9,
+    "quantity_on_hand": 305,
+    "quantity_reserved": 66,
+    "reorder_point": 85,
+    "warehouse_location": "WH-A",
+    "last_restock_date": "2025-09-14"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 10,
+    "quantity_on_hand": 91,
+    "quantity_reserved": 23,
+    "reorder_point": 98,
+    "warehouse_location": "WH-D",
+    "last_restock_date": "2025-09-10"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 11,
+    "quantity_on_hand": 783,
+    "quantity_reserved": 76,
+    "reorder_point": 22,
+    "warehouse_location": "WH-C",
+    "last_restock_date": "2025-09-20"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 12,
+    "quantity_on_hand": 720,
+    "quantity_reserved": 70,
+    "reorder_point": 33,
+    "warehouse_location": "WH-D",
+    "last_restock_date": "2025-09-29"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 13,
+    "quantity_on_hand": 50,
+    "quantity_reserved": 84,
+    "reorder_point": 26,
+    "warehouse_location": "WH-B",
+    "last_restock_date": "2025-09-23"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 14,
+    "quantity_on_hand": 794,
+    "quantity_reserved": 89,
+    "reorder_point": 23,
+    "warehouse_location": "WH-B",
+    "last_restock_date": "2025-09-25"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 15,
+    "quantity_on_hand": 400,
+    "quantity_reserved": 65,
+    "reorder_point": 83,
+    "warehouse_location": "WH-B",
+    "last_restock_date": "2025-09-14"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 16,
+    "quantity_on_hand": 834,
+    "quantity_reserved": 33,
+    "reorder_point": 63,
+    "warehouse_location": "WH-A",
+    "last_restock_date": "2025-09-24"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 17,
+    "quantity_on_hand": 65,
+    "quantity_reserved": 31,
+    "reorder_point": 65,
+    "warehouse_location": "WH-C",
+    "last_restock_date": "2025-09-27"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 18,
+    "quantity_on_hand": 368,
+    "quantity_reserved": 63,
+    "reorder_point": 71,
+    "warehouse_location": "WH-A",
+    "last_restock_date": "2025-09-07"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 19,
+    "quantity_on_hand": 138,
+    "quantity_reserved": 94,
+    "reorder_point": 87,
+    "warehouse_location": "WH-A",
+    "last_restock_date": "2025-09-13"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 20,
+    "quantity_on_hand": 272,
+    "quantity_reserved": 22,
+    "reorder_point": 99,
+    "warehouse_location": "WH-C",
+    "last_restock_date": "2025-09-27"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 21,
+    "quantity_on_hand": 739,
+    "quantity_reserved": 75,
+    "reorder_point": 55,
+    "warehouse_location": "WH-D",
+    "last_restock_date": "2025-09-05"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 22,
+    "quantity_on_hand": 87,
+    "quantity_reserved": 60,
+    "reorder_point": 65,
+    "warehouse_location": "WH-C",
+    "last_restock_date": "2025-09-19"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 23,
+    "quantity_on_hand": 571,
+    "quantity_reserved": 76,
+    "reorder_point": 30,
+    "warehouse_location": "WH-B",
+    "last_restock_date": "2025-09-22"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 24,
+    "quantity_on_hand": 709,
+    "quantity_reserved": 47,
+    "reorder_point": 56,
+    "warehouse_location": "WH-B",
+    "last_restock_date": "2025-09-07"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 25,
+    "quantity_on_hand": 559,
+    "quantity_reserved": 41,
+    "reorder_point": 81,
+    "warehouse_location": "WH-D",
+    "last_restock_date": "2025-09-08"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 26,
+    "quantity_on_hand": 26,
+    "quantity_reserved": 55,
+    "reorder_point": 34,
+    "warehouse_location": "WH-A",
+    "last_restock_date": "2025-09-04"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 27,
+    "quantity_on_hand": 682,
+    "quantity_reserved": 19,
+    "reorder_point": 28,
+    "warehouse_location": "WH-B",
+    "last_restock_date": "2025-09-10"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 28,
+    "quantity_on_hand": 950,
+    "quantity_reserved": 28,
+    "reorder_point": 40,
+    "warehouse_location": "WH-C",
+    "last_restock_date": "2025-09-25"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 29,
+    "quantity_on_hand": 556,
+    "quantity_reserved": 56,
+    "reorder_point": 77,
+    "warehouse_location": "WH-D",
+    "last_restock_date": "2025-09-26"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 30,
+    "quantity_on_hand": 383,
+    "quantity_reserved": 92,
+    "reorder_point": 34,
+    "warehouse_location": "WH-C",
+    "last_restock_date": "2025-09-04"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 31,
+    "quantity_on_hand": 927,
+    "quantity_reserved": 76,
+    "reorder_point": 93,
+    "warehouse_location": "WH-D",
+    "last_restock_date": "2025-09-20"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 32,
+    "quantity_on_hand": 496,
+    "quantity_reserved": 20,
+    "reorder_point": 62,
+    "warehouse_location": "WH-C",
+    "last_restock_date": "2025-09-02"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 33,
+    "quantity_on_hand": 755,
+    "quantity_reserved": 63,
+    "reorder_point": 44,
+    "warehouse_location": "WH-D",
+    "last_restock_date": "2025-09-21"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 34,
+    "quantity_on_hand": 692,
+    "quantity_reserved": 46,
+    "reorder_point": 51,
+    "warehouse_location": "WH-A",
+    "last_restock_date": "2025-09-15"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 35,
+    "quantity_on_hand": 700,
+    "quantity_reserved": 19,
+    "reorder_point": 76,
+    "warehouse_location": "WH-B",
+    "last_restock_date": "2025-09-26"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 36,
+    "quantity_on_hand": 776,
+    "quantity_reserved": 1,
+    "reorder_point": 25,
+    "warehouse_location": "WH-C",
+    "last_restock_date": "2025-09-06"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 37,
+    "quantity_on_hand": 700,
+    "quantity_reserved": 6,
+    "reorder_point": 77,
+    "warehouse_location": "WH-A",
+    "last_restock_date": "2025-08-31"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 38,
+    "quantity_on_hand": 552,
+    "quantity_reserved": 61,
+    "reorder_point": 50,
+    "warehouse_location": "WH-D",
+    "last_restock_date": "2025-09-06"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 39,
+    "quantity_on_hand": 317,
+    "quantity_reserved": 44,
+    "reorder_point": 13,
+    "warehouse_location": "WH-C",
+    "last_restock_date": "2025-09-12"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 40,
+    "quantity_on_hand": 113,
+    "quantity_reserved": 83,
+    "reorder_point": 11,
+    "warehouse_location": "WH-C",
+    "last_restock_date": "2025-09-13"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 41,
+    "quantity_on_hand": 10,
+    "quantity_reserved": 13,
+    "reorder_point": 10,
+    "warehouse_location": "WH-D",
+    "last_restock_date": "2025-09-14"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 42,
+    "quantity_on_hand": 608,
+    "quantity_reserved": 62,
+    "reorder_point": 43,
+    "warehouse_location": "WH-C",
+    "last_restock_date": "2025-09-14"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 43,
+    "quantity_on_hand": 445,
+    "quantity_reserved": 10,
+    "reorder_point": 85,
+    "warehouse_location": "WH-B",
+    "last_restock_date": "2025-09-15"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 44,
+    "quantity_on_hand": 544,
+    "quantity_reserved": 98,
+    "reorder_point": 80,
+    "warehouse_location": "WH-D",
+    "last_restock_date": "2025-09-17"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 45,
+    "quantity_on_hand": 198,
+    "quantity_reserved": 49,
+    "reorder_point": 91,
+    "warehouse_location": "WH-C",
+    "last_restock_date": "2025-09-17"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 46,
+    "quantity_on_hand": 781,
+    "quantity_reserved": 42,
+    "reorder_point": 41,
+    "warehouse_location": "WH-B",
+    "last_restock_date": "2025-09-22"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 47,
+    "quantity_on_hand": 307,
+    "quantity_reserved": 56,
+    "reorder_point": 66,
+    "warehouse_location": "WH-C",
+    "last_restock_date": "2025-09-06"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 48,
+    "quantity_on_hand": 587,
+    "quantity_reserved": 52,
+    "reorder_point": 39,
+    "warehouse_location": "WH-B",
+    "last_restock_date": "2025-09-14"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 49,
+    "quantity_on_hand": 591,
+    "quantity_reserved": 18,
+    "reorder_point": 29,
+    "warehouse_location": "WH-D",
+    "last_restock_date": "2025-08-31"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 50,
+    "quantity_on_hand": 913,
+    "quantity_reserved": 21,
+    "reorder_point": 74,
+    "warehouse_location": "WH-A",
+    "last_restock_date": "2025-09-10"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 51,
+    "quantity_on_hand": 947,
+    "quantity_reserved": 9,
+    "reorder_point": 54,
+    "warehouse_location": "WH-A",
+    "last_restock_date": "2025-09-24"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 52,
+    "quantity_on_hand": 223,
+    "quantity_reserved": 62,
+    "reorder_point": 47,
+    "warehouse_location": "WH-B",
+    "last_restock_date": "2025-09-12"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 53,
+    "quantity_on_hand": 907,
+    "quantity_reserved": 81,
+    "reorder_point": 73,
+    "warehouse_location": "WH-B",
+    "last_restock_date": "2025-09-20"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 54,
+    "quantity_on_hand": 320,
+    "quantity_reserved": 6,
+    "reorder_point": 51,
+    "warehouse_location": "WH-B",
+    "last_restock_date": "2025-09-26"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 55,
+    "quantity_on_hand": 614,
+    "quantity_reserved": 37,
+    "reorder_point": 11,
+    "warehouse_location": "WH-C",
+    "last_restock_date": "2025-08-31"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 56,
+    "quantity_on_hand": 648,
+    "quantity_reserved": 0,
+    "reorder_point": 42,
+    "warehouse_location": "WH-D",
+    "last_restock_date": "2025-09-25"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 57,
+    "quantity_on_hand": 769,
+    "quantity_reserved": 53,
+    "reorder_point": 13,
+    "warehouse_location": "WH-D",
+    "last_restock_date": "2025-09-02"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 58,
+    "quantity_on_hand": 930,
+    "quantity_reserved": 82,
+    "reorder_point": 82,
+    "warehouse_location": "WH-D",
+    "last_restock_date": "2025-09-24"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 59,
+    "quantity_on_hand": 609,
+    "quantity_reserved": 9,
+    "reorder_point": 44,
+    "warehouse_location": "WH-C",
+    "last_restock_date": "2025-09-11"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 60,
+    "quantity_on_hand": 498,
+    "quantity_reserved": 57,
+    "reorder_point": 40,
+    "warehouse_location": "WH-D",
+    "last_restock_date": "2025-09-17"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 61,
+    "quantity_on_hand": 16,
+    "quantity_reserved": 73,
+    "reorder_point": 78,
+    "warehouse_location": "WH-C",
+    "last_restock_date": "2025-09-11"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 62,
+    "quantity_on_hand": 117,
+    "quantity_reserved": 77,
+    "reorder_point": 81,
+    "warehouse_location": "WH-A",
+    "last_restock_date": "2025-09-15"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 63,
+    "quantity_on_hand": 769,
+    "quantity_reserved": 38,
+    "reorder_point": 72,
+    "warehouse_location": "WH-B",
+    "last_restock_date": "2025-09-17"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 64,
+    "quantity_on_hand": 446,
+    "quantity_reserved": 46,
+    "reorder_point": 36,
+    "warehouse_location": "WH-D",
+    "last_restock_date": "2025-09-09"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 65,
+    "quantity_on_hand": 541,
+    "quantity_reserved": 67,
+    "reorder_point": 54,
+    "warehouse_location": "WH-D",
+    "last_restock_date": "2025-09-04"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 66,
+    "quantity_on_hand": 306,
+    "quantity_reserved": 64,
+    "reorder_point": 86,
+    "warehouse_location": "WH-C",
+    "last_restock_date": "2025-09-01"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 67,
+    "quantity_on_hand": 670,
+    "quantity_reserved": 46,
+    "reorder_point": 67,
+    "warehouse_location": "WH-A",
+    "last_restock_date": "2025-09-22"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 68,
+    "quantity_on_hand": 115,
+    "quantity_reserved": 80,
+    "reorder_point": 88,
+    "warehouse_location": "WH-C",
+    "last_restock_date": "2025-09-21"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 69,
+    "quantity_on_hand": 270,
+    "quantity_reserved": 92,
+    "reorder_point": 86,
+    "warehouse_location": "WH-D",
+    "last_restock_date": "2025-09-27"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 70,
+    "quantity_on_hand": 940,
+    "quantity_reserved": 55,
+    "reorder_point": 41,
+    "warehouse_location": "WH-C",
+    "last_restock_date": "2025-09-24"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 71,
+    "quantity_on_hand": 347,
+    "quantity_reserved": 61,
+    "reorder_point": 42,
+    "warehouse_location": "WH-D",
+    "last_restock_date": "2025-09-14"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 72,
+    "quantity_on_hand": 494,
+    "quantity_reserved": 35,
+    "reorder_point": 40,
+    "warehouse_location": "WH-D",
+    "last_restock_date": "2025-09-09"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 73,
+    "quantity_on_hand": 161,
+    "quantity_reserved": 10,
+    "reorder_point": 28,
+    "warehouse_location": "WH-B",
+    "last_restock_date": "2025-09-13"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 74,
+    "quantity_on_hand": 280,
+    "quantity_reserved": 65,
+    "reorder_point": 68,
+    "warehouse_location": "WH-D",
+    "last_restock_date": "2025-09-18"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 75,
+    "quantity_on_hand": 392,
+    "quantity_reserved": 9,
+    "reorder_point": 89,
+    "warehouse_location": "WH-A",
+    "last_restock_date": "2025-08-31"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 76,
+    "quantity_on_hand": 561,
+    "quantity_reserved": 96,
+    "reorder_point": 82,
+    "warehouse_location": "WH-D",
+    "last_restock_date": "2025-09-19"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 77,
+    "quantity_on_hand": 382,
+    "quantity_reserved": 63,
+    "reorder_point": 85,
+    "warehouse_location": "WH-B",
+    "last_restock_date": "2025-09-25"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 78,
+    "quantity_on_hand": 748,
+    "quantity_reserved": 23,
+    "reorder_point": 86,
+    "warehouse_location": "WH-A",
+    "last_restock_date": "2025-09-09"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 79,
+    "quantity_on_hand": 797,
+    "quantity_reserved": 3,
+    "reorder_point": 17,
+    "warehouse_location": "WH-C",
+    "last_restock_date": "2025-09-11"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 80,
+    "quantity_on_hand": 12,
+    "quantity_reserved": 40,
+    "reorder_point": 46,
+    "warehouse_location": "WH-C",
+    "last_restock_date": "2025-09-06"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 81,
+    "quantity_on_hand": 116,
+    "quantity_reserved": 56,
+    "reorder_point": 39,
+    "warehouse_location": "WH-D",
+    "last_restock_date": "2025-09-19"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 82,
+    "quantity_on_hand": 563,
+    "quantity_reserved": 46,
+    "reorder_point": 46,
+    "warehouse_location": "WH-A",
+    "last_restock_date": "2025-09-19"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 83,
+    "quantity_on_hand": 746,
+    "quantity_reserved": 72,
+    "reorder_point": 18,
+    "warehouse_location": "WH-B",
+    "last_restock_date": "2025-09-21"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 84,
+    "quantity_on_hand": 310,
+    "quantity_reserved": 23,
+    "reorder_point": 47,
+    "warehouse_location": "WH-D",
+    "last_restock_date": "2025-09-25"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 85,
+    "quantity_on_hand": 880,
+    "quantity_reserved": 84,
+    "reorder_point": 70,
+    "warehouse_location": "WH-A",
+    "last_restock_date": "2025-09-25"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 86,
+    "quantity_on_hand": 192,
+    "quantity_reserved": 78,
+    "reorder_point": 39,
+    "warehouse_location": "WH-B",
+    "last_restock_date": "2025-09-01"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 87,
+    "quantity_on_hand": 932,
+    "quantity_reserved": 7,
+    "reorder_point": 62,
+    "warehouse_location": "WH-C",
+    "last_restock_date": "2025-09-22"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 88,
+    "quantity_on_hand": 207,
+    "quantity_reserved": 47,
+    "reorder_point": 34,
+    "warehouse_location": "WH-C",
+    "last_restock_date": "2025-09-10"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 89,
+    "quantity_on_hand": 967,
+    "quantity_reserved": 60,
+    "reorder_point": 50,
+    "warehouse_location": "WH-A",
+    "last_restock_date": "2025-09-11"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 90,
+    "quantity_on_hand": 405,
+    "quantity_reserved": 20,
+    "reorder_point": 74,
+    "warehouse_location": "WH-B",
+    "last_restock_date": "2025-09-06"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 91,
+    "quantity_on_hand": 720,
+    "quantity_reserved": 15,
+    "reorder_point": 86,
+    "warehouse_location": "WH-D",
+    "last_restock_date": "2025-08-31"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 92,
+    "quantity_on_hand": 0,
+    "quantity_reserved": 67,
+    "reorder_point": 72,
+    "warehouse_location": "WH-D",
+    "last_restock_date": "2025-09-05"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 93,
+    "quantity_on_hand": 644,
+    "quantity_reserved": 41,
+    "reorder_point": 91,
+    "warehouse_location": "WH-D",
+    "last_restock_date": "2025-09-13"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 94,
+    "quantity_on_hand": 667,
+    "quantity_reserved": 70,
+    "reorder_point": 28,
+    "warehouse_location": "WH-D",
+    "last_restock_date": "2025-09-23"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 95,
+    "quantity_on_hand": 476,
+    "quantity_reserved": 54,
+    "reorder_point": 41,
+    "warehouse_location": "WH-A",
+    "last_restock_date": "2025-09-11"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 96,
+    "quantity_on_hand": 954,
+    "quantity_reserved": 60,
+    "reorder_point": 68,
+    "warehouse_location": "WH-B",
+    "last_restock_date": "2025-09-11"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 97,
+    "quantity_on_hand": 656,
+    "quantity_reserved": 65,
+    "reorder_point": 41,
+    "warehouse_location": "WH-D",
+    "last_restock_date": "2025-09-02"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 98,
+    "quantity_on_hand": 394,
+    "quantity_reserved": 52,
+    "reorder_point": 13,
+    "warehouse_location": "WH-D",
+    "last_restock_date": "2025-09-08"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 99,
+    "quantity_on_hand": 583,
+    "quantity_reserved": 63,
+    "reorder_point": 74,
+    "warehouse_location": "WH-C",
+    "last_restock_date": "2025-08-31"
+  },
+  {
+    "snapshot_date": "2025-09-24",
+    "product_id": 100,
+    "quantity_on_hand": 343,
+    "quantity_reserved": 1,
+    "reorder_point": 17,
+    "warehouse_location": "WH-C",
+    "last_restock_date": "2025-09-21"
+  }
+]

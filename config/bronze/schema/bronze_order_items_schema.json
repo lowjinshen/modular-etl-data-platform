@@ -1,0 +1,82 @@
+{
+  "table_name": "bronze_order_items",
+  "source_system": "order_management",
+  "source_type": "file",
+  "file_format": "csv",
+  "file_path": "raw/order_items.csv",
+  "delimiter": "|",
+  "header": true,
+  "description": "Raw order line item details from order management system",
+  "primary_keys": ["order_item_id"],
+  "partition_by": ["ingestion_date"],
+  "columns": [
+    {
+      "name": "order_item_id",
+      "datatype": "long",
+      "nullable": false,
+      "description": "Unique identifier for the order item"
+    },
+    {
+      "name": "order_id",
+      "datatype": "long",
+      "nullable": false,
+      "description": "Foreign key to order"
+    },
+    {
+      "name": "product_id",
+      "datatype": "long",
+      "nullable": false,
+      "description": "Foreign key to product"
+    },
+    {
+      "name": "quantity",
+      "datatype": "integer",
+      "nullable": false,
+      "description": "Quantity ordered"
+    },
+    {
+      "name": "unit_price",
+      "datatype": "decimal(10,2)",
+      "nullable": false,
+      "description": "Unit price at time of order"
+    },
+    {
+      "name": "line_total",
+      "datatype": "decimal(10,2)",
+      "nullable": false,
+      "description": "Line total (quantity * unit_price)"
+    },
+    {
+      "name": "discount_applied",
+      "datatype": "decimal(10,2)",
+      "nullable": true,
+      "description": "Discount amount applied to this line item"
+    }
+  ],
+  "metadata_columns": [
+    {
+      "name": "ingestion_timestamp",
+      "datatype": "timestamp",
+      "nullable": false,
+      "description": "Timestamp when record was ingested into Bronze layer"
+    },
+    {
+      "name": "ingestion_date",
+      "datatype": "date",
+      "nullable": false,
+      "description": "Date when record was ingested (for partitioning)"
+    },
+    {
+      "name": "source_file",
+      "datatype": "string",
+      "nullable": false,
+      "description": "Name of source file"
+    },
+    {
+      "name": "record_source",
+      "datatype": "string",
+      "nullable": false,
+      "description": "Source system identifier"
+    }
+  ]
+}
