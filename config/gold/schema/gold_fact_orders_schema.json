@@ -1,0 +1,190 @@
+{
+  "table_name": "fact_orders",
+  "source_table": "silver_orders",
+  "fact_type": "transaction",
+  "grain": "One row per order",
+  "description": "Order header facts with point-in-time dimension references",
+  "load_type": "incremental",
+  "partition_by": ["order_date_key"],
+  "columns": [
+    {
+      "name": "order_key",
+      "datatype": "bigint",
+      "nullable": false,
+      "description": "Surrogate key (primary key) - auto-generated",
+      "is_surrogate_key": true
+    },
+    {
+      "name": "order_id",
+      "datatype": "bigint",
+      "nullable": false,
+      "description": "Business key from source system",
+      "is_business_key": true
+    },
+    {
+      "name": "customer_key",
+      "datatype": "bigint",
+      "nullable": false,
+      "description": "FK to dim_customer (version at order time)",
+      "is_dimension_key": true,
+      "references": {
+        "dimension": "dim_customer",
+        "join_type": "point_in_time",
+        "join_logic": "order_date BETWEEN valid_from AND valid_to"
+      }
+    },
+    {
+      "name": "order_date_key",
+      "datatype": "integer",
+      "nullable": false,
+      "description": "FK to dim_date (partition key)",
+      "is_dimension_key": true,
+      "references": {
+        "dimension": "dim_date",
+        "join_type": "direct",
+        "join_logic": "date_key = cast(date_format(order_date, 'yyyyMMdd') as int)"
+      }
+    },
+    {
+      "name": "order_date",
+      "datatype": "date",
+      "nullable": false,
+      "description": "Order date (denormalized for convenience)",
+      "is_denormalized": true
+    },
+    {
+      "name": "order_time",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Order time HH:MM:SS"
+    },
+    {
+      "name": "order_status",
+      "datatype": "string",
+      "nullable": false,
+      "description": "Current order status"
+    },
+    {
+      "name": "payment_method",
+      "datatype": "string",
+      "nullable": false,
+      "description": "Payment method"
+    },
+    {
+      "name": "shipping_address",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Shipping address (denormalized)"
+    },
+    {
+      "name": "shipping_city",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Shipping city"
+    },
+    {
+      "name": "shipping_state",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Shipping state"
+    },
+    {
+      "name": "shipping_postal_code",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Shipping postal code"
+    },
+    {
+      "name": "order_total",
+      "datatype": "decimal(10,2)",
+      "nullable": false,
+      "description": "Measure: Total order amount",
+      "is_measure": true,
+      "measure_type": "additive"
+    },
+    {
+      "name": "tax_amount",
+      "datatype": "decimal(10,2)",
+      "nullable": false,
+      "description": "Measure: Tax amount",
+      "is_measure": true,
+      "measure_type": "additive"
+    },
+    {
+      "name": "shipping_fee",
+      "datatype": "decimal(10,2)",
+      "nullable": false,
+      "description": "Measure: Shipping fee",
+      "is_measure": true,
+      "measure_type": "additive"
+    },
+    {
+      "name": "discount_amount",
+      "datatype": "decimal(10,2)",
+      "nullable": false,
+      "description": "Measure: Discount amount",
+      "is_measure": true,
+      "measure_type": "additive"
+    },
+    {
+      "name": "discount_code",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Discount code applied"
+    },
+    {
+      "name": "item_count",
+      "datatype": "integer",
+      "nullable": false,
+      "description": "Measure: Number of items in order",
+      "is_measure": true,
+      "measure_type": "additive",
+      "calculation": "count(order_items) per order"
+    },
+    {
+      "name": "notes",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Order notes"
+    },
+    {
+      "name": "record_source",
+      "datatype": "string",
+      "nullable": false,
+      "description": "Source system identifier"
+    },
+    {
+      "name": "loaded_timestamp",
+      "datatype": "timestamp",
+      "nullable": false,
+      "description": "When loaded into Gold layer"
+    }
+  ],
+  "measures": [
+    {
+      "name": "order_total",
+      "aggregation": "SUM",
+      "description": "Total sales revenue"
+    },
+    {
+      "name": "tax_amount",
+      "aggregation": "SUM",
+      "description": "Total tax collected"
+    },
+    {
+      "name": "shipping_fee",
+      "aggregation": "SUM",
+      "description": "Total shipping revenue"
+    },
+    {
+      "name": "discount_amount",
+      "aggregation": "SUM",
+      "description": "Total discounts given"
+    },
+    {
+      "name": "item_count",
+      "aggregation": "SUM",
+      "description": "Total items sold"
+    }
+  ]
+}

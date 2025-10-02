@@ -1,0 +1,152 @@
+{
+  "table_name": "dim_product",
+  "source_table": "silver_products",
+  "dimension_type": "scd_type2",
+  "business_key": "product_id",
+  "surrogate_key": "product_key",
+  "description": "Product dimension with SCD Type 2 for price changes",
+  "partition_by": [],
+  "columns": [
+    {
+      "name": "product_key",
+      "datatype": "bigint",
+      "nullable": false,
+      "description": "Surrogate key (primary key) - auto-generated",
+      "is_surrogate_key": true
+    },
+    {
+      "name": "product_id",
+      "datatype": "bigint",
+      "nullable": false,
+      "description": "Business key from source system",
+      "is_business_key": true
+    },
+    {
+      "name": "product_name",
+      "datatype": "string",
+      "nullable": false,
+      "description": "Product name (Type 1 - always latest)",
+      "scd_type": "type1"
+    },
+    {
+      "name": "category",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Category (Type 1)",
+      "scd_type": "type1"
+    },
+    {
+      "name": "subcategory",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Subcategory (Type 1)",
+      "scd_type": "type1"
+    },
+    {
+      "name": "brand",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Brand (Type 1)",
+      "scd_type": "type1"
+    },
+    {
+      "name": "unit_price",
+      "datatype": "decimal(10,2)",
+      "nullable": false,
+      "description": "Unit price (Type 2 - track price history)",
+      "scd_type": "type2"
+    },
+    {
+      "name": "cost",
+      "datatype": "decimal(10,2)",
+      "nullable": true,
+      "description": "Product cost (Type 2 - track cost history)",
+      "scd_type": "type2"
+    },
+    {
+      "name": "description",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Description (Type 1)",
+      "scd_type": "type1"
+    },
+    {
+      "name": "weight_kg",
+      "datatype": "decimal(8,2)",
+      "nullable": true,
+      "description": "Weight (Type 1)",
+      "scd_type": "type1"
+    },
+    {
+      "name": "is_active",
+      "datatype": "boolean",
+      "nullable": true,
+      "description": "Active status (Type 1)",
+      "scd_type": "type1"
+    },
+    {
+      "name": "created_date",
+      "datatype": "date",
+      "nullable": true,
+      "description": "Creation date (never changes)",
+      "scd_type": "type1"
+    },
+    {
+      "name": "valid_from",
+      "datatype": "timestamp",
+      "nullable": false,
+      "description": "SCD: When this version became effective",
+      "is_scd_column": true
+    },
+    {
+      "name": "valid_to",
+      "datatype": "timestamp",
+      "nullable": false,
+      "description": "SCD: When this version was superseded (9999-12-31 if current)",
+      "is_scd_column": true
+    },
+    {
+      "name": "is_current",
+      "datatype": "boolean",
+      "nullable": false,
+      "description": "SCD: Current version flag",
+      "is_scd_column": true
+    },
+    {
+      "name": "hash_diff",
+      "datatype": "string",
+      "nullable": false,
+      "description": "MD5 hash of Type 2 columns for change detection",
+      "is_scd_column": true
+    },
+    {
+      "name": "record_source",
+      "datatype": "string",
+      "nullable": false,
+      "description": "Source system identifier",
+      "scd_type": "type1"
+    }
+  ],
+  "scd_config": {
+    "type2_columns": [
+      "unit_price",
+      "cost"
+    ],
+    "type1_columns": [
+      "product_name",
+      "category",
+      "subcategory",
+      "brand",
+      "description",
+      "weight_kg",
+      "is_active",
+      "created_date",
+      "record_source"
+    ],
+    "hash_columns": [
+      "unit_price",
+      "cost"
+    ],
+    "hash_delimiter": "|"
+  }
+}

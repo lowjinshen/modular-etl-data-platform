@@ -1,0 +1,120 @@
+{
+  "table_name": "silver_products",
+  "source_table": "bronze_products",
+  "source_system": "product_catalog",
+  "load_type": "upsert",
+  "description": "Cleansed and validated product catalog with latest version only",
+  "primary_keys": ["product_id"],
+  "partition_by": [],
+  "incremental_column": "ingestion_date",
+  "columns": [
+    {
+      "name": "product_id",
+      "datatype": "bigint",
+      "nullable": false,
+      "description": "Business key - unique product identifier",
+      "transformation": null
+    },
+    {
+      "name": "product_name",
+      "datatype": "string",
+      "nullable": false,
+      "description": "Product name (trimmed)",
+      "transformation": "trim(product_name)"
+    },
+    {
+      "name": "category",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Product category (standardized)",
+      "transformation": "initcap(trim(category))"
+    },
+    {
+      "name": "subcategory",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Product subcategory",
+      "transformation": "initcap(trim(subcategory))"
+    },
+    {
+      "name": "brand",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Product brand (trimmed, title case)",
+      "transformation": "initcap(trim(brand))"
+    },
+    {
+      "name": "unit_price",
+      "datatype": "decimal(10,2)",
+      "nullable": false,
+      "description": "Current selling price",
+      "transformation": null
+    },
+    {
+      "name": "cost",
+      "datatype": "decimal(10,2)",
+      "nullable": true,
+      "description": "Product cost",
+      "transformation": null
+    },
+    {
+      "name": "description",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Product description (trimmed)",
+      "transformation": "trim(description)"
+    },
+    {
+      "name": "weight_kg",
+      "datatype": "decimal(8,2)",
+      "nullable": true,
+      "description": "Weight in kilograms",
+      "transformation": null
+    },
+    {
+      "name": "is_active",
+      "datatype": "boolean",
+      "nullable": true,
+      "description": "Active status (default: true)",
+      "transformation": "coalesce(is_active, true)"
+    },
+    {
+      "name": "created_date",
+      "datatype": "date",
+      "nullable": true,
+      "description": "Product creation date",
+      "transformation": null
+    },
+    {
+      "name": "updated_timestamp",
+      "datatype": "timestamp",
+      "nullable": false,
+      "description": "When this record was last updated in Silver",
+      "transformation": "current_timestamp()"
+    },
+    {
+      "name": "record_source",
+      "datatype": "string",
+      "nullable": false,
+      "description": "Source system identifier",
+      "transformation": "'product_catalog'"
+    }
+  ],
+  "data_quality_rules": {
+    "null_checks": [
+      "product_id",
+      "product_name",
+      "unit_price"
+    ],
+    "uniqueness_checks": [
+      "product_id"
+    ],
+    "value_constraints": {
+      "unit_price": "> 0",
+      "cost": ">= 0",
+      "weight_kg": "> 0"
+    },
+    "format_validations": {},
+    "referential_integrity": {}
+  }
+}

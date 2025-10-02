@@ -1,0 +1,105 @@
+{
+  "table_name": "silver_order_items",
+  "source_table": "bronze_order_items",
+  "source_system": "order_management",
+  "load_type": "upsert",
+  "description": "Cleansed and validated order line items",
+  "primary_keys": ["order_item_id"],
+  "partition_by": [],
+  "incremental_column": "ingestion_date",
+  "columns": [
+    {
+      "name": "order_item_id",
+      "datatype": "bigint",
+      "nullable": false,
+      "description": "Business key - unique line item identifier",
+      "transformation": null
+    },
+    {
+      "name": "order_id",
+      "datatype": "bigint",
+      "nullable": false,
+      "description": "Foreign key to order",
+      "transformation": null
+    },
+    {
+      "name": "product_id",
+      "datatype": "bigint",
+      "nullable": false,
+      "description": "Foreign key to product",
+      "transformation": null
+    },
+    {
+      "name": "quantity",
+      "datatype": "integer",
+      "nullable": false,
+      "description": "Quantity ordered",
+      "transformation": null
+    },
+    {
+      "name": "unit_price",
+      "datatype": "decimal(10,2)",
+      "nullable": false,
+      "description": "Unit price at time of order",
+      "transformation": null
+    },
+    {
+      "name": "line_total",
+      "datatype": "decimal(10,2)",
+      "nullable": false,
+      "description": "Line total (quantity * unit_price)",
+      "transformation": null
+    },
+    {
+      "name": "discount_applied",
+      "datatype": "decimal(10,2)",
+      "nullable": true,
+      "description": "Discount on this line",
+      "transformation": null
+    },
+    {
+      "name": "updated_timestamp",
+      "datatype": "timestamp",
+      "nullable": false,
+      "description": "When this record was last updated in Silver",
+      "transformation": "current_timestamp()"
+    },
+    {
+      "name": "record_source",
+      "datatype": "string",
+      "nullable": false,
+      "description": "Source system identifier",
+      "transformation": "'order_management'"
+    }
+  ],
+  "data_quality_rules": {
+    "null_checks": [
+      "order_item_id",
+      "order_id",
+      "product_id",
+      "quantity",
+      "unit_price",
+      "line_total"
+    ],
+    "uniqueness_checks": [
+      "order_item_id"
+    ],
+    "value_constraints": {
+      "quantity": "> 0",
+      "unit_price": "> 0",
+      "line_total": "> 0",
+      "discount_applied": ">= 0"
+    },
+    "format_validations": {},
+    "referential_integrity": {
+      "order_id": {
+        "reference_table": "silver_orders",
+        "reference_column": "order_id"
+      },
+      "product_id": {
+        "reference_table": "silver_products",
+        "reference_column": "product_id"
+      }
+    }
+  }
+}

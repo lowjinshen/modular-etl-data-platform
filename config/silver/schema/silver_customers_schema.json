@@ -1,0 +1,153 @@
+{
+  "table_name": "silver_customers",
+  "source_table": "bronze_customers",
+  "source_system": "crm",
+  "load_type": "upsert",
+  "description": "Cleansed and validated customer master data with latest version only",
+  "primary_keys": ["customer_id"],
+  "partition_by": [],
+  "incremental_column": "ingestion_date",
+  "columns": [
+    {
+      "name": "customer_id",
+      "datatype": "bigint",
+      "nullable": false,
+      "description": "Business key - unique customer identifier",
+      "transformation": null
+    },
+    {
+      "name": "first_name",
+      "datatype": "string",
+      "nullable": false,
+      "description": "Customer first name (trimmed, title case)",
+      "transformation": "initcap(trim(first_name))"
+    },
+    {
+      "name": "last_name",
+      "datatype": "string",
+      "nullable": false,
+      "description": "Customer last name (trimmed, title case)",
+      "transformation": "initcap(trim(last_name))"
+    },
+    {
+      "name": "email",
+      "datatype": "string",
+      "nullable": false,
+      "description": "Email address (lowercase, validated format)",
+      "transformation": "lower(trim(email))"
+    },
+    {
+      "name": "phone",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Phone number (formatted: XXX-XXX-XXXX)",
+      "transformation": "format_phone(phone)"
+    },
+    {
+      "name": "address_line1",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Primary address line (trimmed)",
+      "transformation": "trim(address_line1)"
+    },
+    {
+      "name": "address_line2",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Secondary address line (apartment, suite, etc.)",
+      "transformation": "trim(address_line2)"
+    },
+    {
+      "name": "city",
+      "datatype": "string",
+      "nullable": true,
+      "description": "City (trimmed, title case)",
+      "transformation": "initcap(trim(city))"
+    },
+    {
+      "name": "state",
+      "datatype": "string",
+      "nullable": true,
+      "description": "State code (uppercase, 2 chars)",
+      "transformation": "upper(trim(state))"
+    },
+    {
+      "name": "postal_code",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Postal code (formatted)",
+      "transformation": "trim(postal_code)"
+    },
+    {
+      "name": "country",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Country (default: USA)",
+      "transformation": "coalesce(upper(trim(country)), 'USA')"
+    },
+    {
+      "name": "customer_status",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Status: active, inactive",
+      "transformation": "lower(trim(customer_status))"
+    },
+    {
+      "name": "registration_date",
+      "datatype": "date",
+      "nullable": true,
+      "description": "Customer registration date",
+      "transformation": null
+    },
+    {
+      "name": "customer_tier",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Tier: bronze, silver, gold, platinum",
+      "transformation": "lower(trim(customer_tier))"
+    },
+    {
+      "name": "marketing_opt_in",
+      "datatype": "boolean",
+      "nullable": true,
+      "description": "Marketing consent flag",
+      "transformation": null
+    },
+    {
+      "name": "updated_timestamp",
+      "datatype": "timestamp",
+      "nullable": false,
+      "description": "When this record was last updated in Silver",
+      "transformation": "current_timestamp()"
+    },
+    {
+      "name": "record_source",
+      "datatype": "string",
+      "nullable": false,
+      "description": "Source system identifier",
+      "transformation": "'crm'"
+    }
+  ],
+  "data_quality_rules": {
+    "null_checks": [
+      "customer_id",
+      "first_name",
+      "last_name",
+      "email"
+    ],
+    "uniqueness_checks": [
+      "customer_id",
+      "email"
+    ],
+    "value_constraints": {
+      "customer_status": ["active", "inactive"],
+      "customer_tier": ["bronze", "silver", "gold", "platinum"]
+    },
+    "format_validations": {
+      "email": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+      "state": "^[A-Z]{2}$",
+      "postal_code": "^[0-9]{5}(-[0-9]{4})?$"
+    },
+    "referential_integrity": {}
+  }
+}

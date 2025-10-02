@@ -1,0 +1,120 @@
+{
+  "table_name": "dim_date",
+  "source_table": "generated",
+  "dimension_type": "type1",
+  "business_key": "date_key",
+  "surrogate_key": "date_key",
+  "description": "Date dimension for time intelligence and fiscal calendar support",
+  "partition_by": [],
+  "date_range": {
+    "start_date": "2024-01-01",
+    "end_date": "2026-12-31",
+    "description": "Generate dates from earliest transaction to 2+ years future"
+  },
+  "columns": [
+    {
+      "name": "date_key",
+      "datatype": "integer",
+      "nullable": false,
+      "description": "Primary key in YYYYMMDD format",
+      "calculation": "cast(date_format(date, 'yyyyMMdd') as int)"
+    },
+    {
+      "name": "date",
+      "datatype": "date",
+      "nullable": false,
+      "description": "Actual date value"
+    },
+    {
+      "name": "year",
+      "datatype": "integer",
+      "nullable": false,
+      "description": "Year (2024)",
+      "calculation": "year(date)"
+    },
+    {
+      "name": "quarter",
+      "datatype": "integer",
+      "nullable": false,
+      "description": "Quarter (1-4)",
+      "calculation": "quarter(date)"
+    },
+    {
+      "name": "month",
+      "datatype": "integer",
+      "nullable": false,
+      "description": "Month (1-12)",
+      "calculation": "month(date)"
+    },
+    {
+      "name": "month_name",
+      "datatype": "string",
+      "nullable": false,
+      "description": "Month name (January, February, etc.)",
+      "calculation": "date_format(date, 'MMMM')"
+    },
+    {
+      "name": "day",
+      "datatype": "integer",
+      "nullable": false,
+      "description": "Day of month (1-31)",
+      "calculation": "dayofmonth(date)"
+    },
+    {
+      "name": "day_of_week",
+      "datatype": "integer",
+      "nullable": false,
+      "description": "Day of week (1=Monday, 7=Sunday)",
+      "calculation": "dayofweek(date)"
+    },
+    {
+      "name": "day_name",
+      "datatype": "string",
+      "nullable": false,
+      "description": "Day name (Monday, Tuesday, etc.)",
+      "calculation": "date_format(date, 'EEEE')"
+    },
+    {
+      "name": "week_of_year",
+      "datatype": "integer",
+      "nullable": false,
+      "description": "ISO week number (1-53)",
+      "calculation": "weekofyear(date)"
+    },
+    {
+      "name": "is_weekend",
+      "datatype": "boolean",
+      "nullable": false,
+      "description": "Weekend flag (Saturday or Sunday)",
+      "calculation": "dayofweek(date) in (1, 7)"
+    },
+    {
+      "name": "is_holiday",
+      "datatype": "boolean",
+      "nullable": false,
+      "description": "Holiday flag (to be populated based on holiday calendar)",
+      "calculation": "false"
+    },
+    {
+      "name": "fiscal_year",
+      "datatype": "integer",
+      "nullable": false,
+      "description": "Fiscal year (assuming fiscal year = calendar year)",
+      "calculation": "year(date)"
+    },
+    {
+      "name": "fiscal_quarter",
+      "datatype": "integer",
+      "nullable": false,
+      "description": "Fiscal quarter (1-4)",
+      "calculation": "quarter(date)"
+    },
+    {
+      "name": "fiscal_period",
+      "datatype": "integer",
+      "nullable": false,
+      "description": "Fiscal period/month (1-12)",
+      "calculation": "month(date)"
+    }
+  ]
+}

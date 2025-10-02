@@ -1,0 +1,98 @@
+{
+  "table_name": "silver_inventory",
+  "source_table": "bronze_inventory",
+  "source_system": "inventory_system",
+  "load_type": "upsert",
+  "description": "Cleansed and validated daily inventory snapshots",
+  "primary_keys": ["snapshot_date", "product_id"],
+  "partition_by": ["snapshot_date"],
+  "incremental_column": "snapshot_date",
+  "columns": [
+    {
+      "name": "snapshot_date",
+      "datatype": "date",
+      "nullable": false,
+      "description": "Date of snapshot (partition key)",
+      "transformation": null
+    },
+    {
+      "name": "product_id",
+      "datatype": "bigint",
+      "nullable": false,
+      "description": "Foreign key to product",
+      "transformation": null
+    },
+    {
+      "name": "quantity_on_hand",
+      "datatype": "integer",
+      "nullable": false,
+      "description": "Available quantity",
+      "transformation": null
+    },
+    {
+      "name": "quantity_reserved",
+      "datatype": "integer",
+      "nullable": false,
+      "description": "Reserved quantity",
+      "transformation": null
+    },
+    {
+      "name": "reorder_point",
+      "datatype": "integer",
+      "nullable": true,
+      "description": "Reorder threshold",
+      "transformation": null
+    },
+    {
+      "name": "warehouse_location",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Warehouse code",
+      "transformation": "upper(trim(warehouse_location))"
+    },
+    {
+      "name": "last_restock_date",
+      "datatype": "date",
+      "nullable": true,
+      "description": "Last restock date",
+      "transformation": null
+    },
+    {
+      "name": "updated_timestamp",
+      "datatype": "timestamp",
+      "nullable": false,
+      "description": "When this record was last updated in Silver",
+      "transformation": "current_timestamp()"
+    },
+    {
+      "name": "record_source",
+      "datatype": "string",
+      "nullable": false,
+      "description": "Source system identifier",
+      "transformation": "'inventory_system'"
+    }
+  ],
+  "data_quality_rules": {
+    "null_checks": [
+      "snapshot_date",
+      "product_id",
+      "quantity_on_hand",
+      "quantity_reserved"
+    ],
+    "uniqueness_checks": [
+      ["snapshot_date", "product_id"]
+    ],
+    "value_constraints": {
+      "quantity_on_hand": ">= 0",
+      "quantity_reserved": ">= 0",
+      "reorder_point": "> 0"
+    },
+    "format_validations": {},
+    "referential_integrity": {
+      "product_id": {
+        "reference_table": "silver_products",
+        "reference_column": "product_id"
+      }
+    }
+  }
+}

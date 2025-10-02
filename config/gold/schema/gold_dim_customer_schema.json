@@ -1,0 +1,188 @@
+{
+  "table_name": "dim_customer",
+  "source_table": "silver_customers",
+  "dimension_type": "scd_type2",
+  "business_key": "customer_id",
+  "surrogate_key": "customer_key",
+  "description": "Customer dimension with SCD Type 2 for address and tier changes",
+  "partition_by": [],
+  "columns": [
+    {
+      "name": "customer_key",
+      "datatype": "bigint",
+      "nullable": false,
+      "description": "Surrogate key (primary key) - auto-generated",
+      "is_surrogate_key": true
+    },
+    {
+      "name": "customer_id",
+      "datatype": "bigint",
+      "nullable": false,
+      "description": "Business key from source system",
+      "is_business_key": true
+    },
+    {
+      "name": "first_name",
+      "datatype": "string",
+      "nullable": false,
+      "description": "Customer first name (Type 1 - always latest)",
+      "scd_type": "type1"
+    },
+    {
+      "name": "last_name",
+      "datatype": "string",
+      "nullable": false,
+      "description": "Customer last name (Type 1 - always latest)",
+      "scd_type": "type1"
+    },
+    {
+      "name": "email",
+      "datatype": "string",
+      "nullable": false,
+      "description": "Email address (Type 1 - always latest)",
+      "scd_type": "type1"
+    },
+    {
+      "name": "phone",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Phone number (Type 1 - always latest)",
+      "scd_type": "type1"
+    },
+    {
+      "name": "address_line1",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Primary address (Type 2 - track history)",
+      "scd_type": "type2"
+    },
+    {
+      "name": "address_line2",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Secondary address (Type 2 - track history)",
+      "scd_type": "type2"
+    },
+    {
+      "name": "city",
+      "datatype": "string",
+      "nullable": true,
+      "description": "City (Type 2 - track history)",
+      "scd_type": "type2"
+    },
+    {
+      "name": "state",
+      "datatype": "string",
+      "nullable": true,
+      "description": "State (Type 2 - track history)",
+      "scd_type": "type2"
+    },
+    {
+      "name": "postal_code",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Postal code (Type 2 - track history)",
+      "scd_type": "type2"
+    },
+    {
+      "name": "country",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Country",
+      "scd_type": "type1"
+    },
+    {
+      "name": "customer_status",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Current status (Type 1)",
+      "scd_type": "type1"
+    },
+    {
+      "name": "registration_date",
+      "datatype": "date",
+      "nullable": true,
+      "description": "Registration date (never changes)",
+      "scd_type": "type1"
+    },
+    {
+      "name": "customer_tier",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Customer tier (Type 2 - track history)",
+      "scd_type": "type2"
+    },
+    {
+      "name": "marketing_opt_in",
+      "datatype": "boolean",
+      "nullable": true,
+      "description": "Marketing consent (Type 1)",
+      "scd_type": "type1"
+    },
+    {
+      "name": "valid_from",
+      "datatype": "timestamp",
+      "nullable": false,
+      "description": "SCD: When this version became effective",
+      "is_scd_column": true
+    },
+    {
+      "name": "valid_to",
+      "datatype": "timestamp",
+      "nullable": false,
+      "description": "SCD: When this version was superseded (9999-12-31 if current)",
+      "is_scd_column": true
+    },
+    {
+      "name": "is_current",
+      "datatype": "boolean",
+      "nullable": false,
+      "description": "SCD: Current version flag",
+      "is_scd_column": true
+    },
+    {
+      "name": "hash_diff",
+      "datatype": "string",
+      "nullable": false,
+      "description": "MD5 hash of Type 2 columns for change detection",
+      "is_scd_column": true
+    },
+    {
+      "name": "record_source",
+      "datatype": "string",
+      "nullable": false,
+      "description": "Source system identifier",
+      "scd_type": "type1"
+    }
+  ],
+  "scd_config": {
+    "type2_columns": [
+      "address_line1",
+      "address_line2",
+      "city",
+      "state",
+      "postal_code",
+      "customer_tier"
+    ],
+    "type1_columns": [
+      "first_name",
+      "last_name",
+      "email",
+      "phone",
+      "country",
+      "customer_status",
+      "registration_date",
+      "marketing_opt_in",
+      "record_source"
+    ],
+    "hash_columns": [
+      "address_line1",
+      "address_line2",
+      "city",
+      "state",
+      "postal_code",
+      "customer_tier"
+    ],
+    "hash_delimiter": "|"
+  }
+}

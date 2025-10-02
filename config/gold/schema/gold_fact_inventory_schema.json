@@ -1,0 +1,168 @@
+{
+  "table_name": "fact_inventory_snapshot",
+  "source_table": "silver_inventory",
+  "fact_type": "snapshot",
+  "grain": "One row per product per day",
+  "description": "Daily inventory levels by product with stock value calculations",
+  "load_type": "incremental",
+  "partition_by": ["snapshot_date_key"],
+  "columns": [
+    {
+      "name": "inventory_key",
+      "datatype": "bigint",
+      "nullable": false,
+      "description": "Surrogate key (primary key) - auto-generated",
+      "is_surrogate_key": true
+    },
+    {
+      "name": "snapshot_date_key",
+      "datatype": "integer",
+      "nullable": false,
+      "description": "FK to dim_date (partition key)",
+      "is_dimension_key": true,
+      "references": {
+        "dimension": "dim_date",
+        "join_type": "direct",
+        "join_logic": "date_key = cast(date_format(snapshot_date, 'yyyyMMdd') as int)"
+      }
+    },
+    {
+      "name": "snapshot_date",
+      "datatype": "date",
+      "nullable": false,
+      "description": "Snapshot date (denormalized)",
+      "is_denormalized": true
+    },
+    {
+      "name": "product_key",
+      "datatype": "bigint",
+      "nullable": false,
+      "description": "FK to dim_product (current version)",
+      "is_dimension_key": true,
+      "references": {
+        "dimension": "dim_product",
+        "join_type": "current",
+        "join_logic": "is_current = true"
+      }
+    },
+    {
+      "name": "product_id",
+      "datatype": "bigint",
+      "nullable": false,
+      "description": "Business key (denormalized)",
+      "is_denormalized": true
+    },
+    {
+      "name": "quantity_on_hand",
+      "datatype": "integer",
+      "nullable": false,
+      "description": "Measure: Available quantity",
+      "is_measure": true,
+      "measure_type": "semi-additive"
+    },
+    {
+      "name": "quantity_reserved",
+      "datatype": "integer",
+      "nullable": false,
+      "description": "Measure: Reserved quantity",
+      "is_measure": true,
+      "measure_type": "semi-additive"
+    },
+    {
+      "name": "quantity_available",
+      "datatype": "integer",
+      "nullable": false,
+      "description": "Calculated: quantity_on_hand - quantity_reserved",
+      "is_measure": true,
+      "is_calculated": true,
+      "measure_type": "semi-additive",
+      "calculation": "quantity_on_hand - quantity_reserved"
+    },
+    {
+      "name": "reorder_point",
+      "datatype": "integer",
+      "nullable": true,
+      "description": "Reorder threshold"
+    },
+    {
+      "name": "warehouse_location",
+      "datatype": "string",
+      "nullable": true,
+      "description": "Warehouse code"
+    },
+    {
+      "name": "last_restock_date",
+      "datatype": "date",
+      "nullable": true,
+      "description": "Last restock date"
+    },
+    {
+      "name": "unit_cost",
+      "datatype": "decimal(10,2)",
+      "nullable": true,
+      "description": "Current product cost from dim_product",
+      "is_measure": true,
+      "measure_type": "semi-additive"
+    },
+    {
+      "name": "stock_value",
+      "datatype": "decimal(12,2)",
+      "nullable": true,
+      "description": "Calculated: quantity_on_hand * unit_cost",
+      "is_measure": true,
+      "is_calculated": true,
+      "measure_type": "semi-additive",
+      "calculation": "quantity_on_hand * unit_cost"
+    },
+    {
+      "name": "record_source",
+      "datatype": "string",
+      "nullable": false,
+      "description": "Source system identifier"
+    },
+    {
+      "name": "loaded_timestamp",
+      "datatype": "timestamp",
+      "nullable": false,
+      "description": "When loaded into Gold layer"
+    }
+  ],
+  "measures": [
+    {
+      "name": "quantity_on_hand",
+      "aggregation": "SUM",
+      "aggregation_note": "Can sum across products, use AVG/LAST for time dimension",
+      "description": "Total inventory quantity"
+    },
+    {
+      "name": "quantity_reserved",
+      "aggregation": "SUM",
+      "aggregation_note": "Can sum across products, use AVG/LAST for time dimension",
+      "description": "Total reserved quantity"
+    },
+    {
+      "name": "quantity_available",
+      "aggregation": "SUM",
+      "aggregation_note": "Can sum across products, use AVG/LAST for time dimension",
+      "description": "Total available quantity"
+    },
+    {
+      "name": "stock_value",
+      "aggregation": "SUM",
+      "aggregation_note": "Can sum across products, use AVG/LAST for time dimension",
+      "description": "Total inventory value"
+    }
+  ],
+  "calculated_measures": [
+    {
+      "name": "quantity_available",
+      "formula": "quantity_on_hand - quantity_reserved",
+      "description": "Net available inventory"
+    },
+    {
+      "name": "stock_value",
+      "formula": "quantity_on_hand * unit_cost",
+      "description": "Inventory valuation at cost"
+    }
+  ]
+}

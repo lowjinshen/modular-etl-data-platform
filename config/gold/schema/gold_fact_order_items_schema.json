@@ -1,0 +1,163 @@
+{
+  "table_name": "fact_order_items",
+  "source_table": "silver_order_items",
+  "fact_type": "transaction",
+  "grain": "One row per product per order",
+  "description": "Order line item facts with profit calculations",
+  "load_type": "incremental",
+  "partition_by": [],
+  "columns": [
+    {
+      "name": "order_item_key",
+      "datatype": "bigint",
+      "nullable": false,
+      "description": "Surrogate key (primary key) - auto-generated",
+      "is_surrogate_key": true
+    },
+    {
+      "name": "order_item_id",
+      "datatype": "bigint",
+      "nullable": false,
+      "description": "Business key from source system",
+      "is_business_key": true
+    },
+    {
+      "name": "order_key",
+      "datatype": "bigint",
+      "nullable": false,
+      "description": "FK to fact_orders",
+      "is_dimension_key": true,
+      "references": {
+        "dimension": "fact_orders",
+        "join_type": "direct",
+        "join_logic": "order_id match"
+      }
+    },
+    {
+      "name": "order_id",
+      "datatype": "bigint",
+      "nullable": false,
+      "description": "Business key (denormalized)",
+      "is_denormalized": true
+    },
+    {
+      "name": "product_key",
+      "datatype": "bigint",
+      "nullable": false,
+      "description": "FK to dim_product (version at order time)",
+      "is_dimension_key": true,
+      "references": {
+        "dimension": "dim_product",
+        "join_type": "point_in_time",
+        "join_logic": "order_date BETWEEN valid_from AND valid_to"
+      }
+    },
+    {
+      "name": "customer_key",
+      "datatype": "bigint",
+      "nullable": false,
+      "description": "FK to dim_customer (denormalized from order)",
+      "is_dimension_key": true,
+      "is_denormalized": true
+    },
+    {
+      "name": "order_date_key",
+      "datatype": "integer",
+      "nullable": false,
+      "description": "FK to dim_date (denormalized from order)",
+      "is_dimension_key": true,
+      "is_denormalized": true
+    },
+    {
+      "name": "quantity",
+      "datatype": "integer",
+      "nullable": false,
+      "description": "Measure: Quantity ordered",
+      "is_measure": true,
+      "measure_type": "additive"
+    },
+    {
+      "name": "unit_price",
+      "datatype": "decimal(10,2)",
+      "nullable": false,
+      "description": "Measure: Unit price at order time",
+      "is_measure": true,
+      "measure_type": "semi-additive"
+    },
+    {
+      "name": "line_total",
+      "datatype": "decimal(10,2)",
+      "nullable": false,
+      "description": "Measure: Line total (quantity * unit_price)",
+      "is_measure": true,
+      "measure_type": "additive"
+    },
+    {
+      "name": "discount_applied",
+      "datatype": "decimal(10,2)",
+      "nullable": true,
+      "description": "Measure: Line discount",
+      "is_measure": true,
+      "measure_type": "additive"
+    },
+    {
+      "name": "product_cost",
+      "datatype": "decimal(10,2)",
+      "nullable": true,
+      "description": "Measure: Product cost from dim_product",
+      "is_measure": true,
+      "measure_type": "semi-additive"
+    },
+    {
+      "name": "profit",
+      "datatype": "decimal(10,2)",
+      "nullable": true,
+      "description": "Calculated: (unit_price - product_cost) * quantity",
+      "is_measure": true,
+      "is_calculated": true,
+      "measure_type": "additive",
+      "calculation": "(unit_price - product_cost) * quantity"
+    },
+    {
+      "name": "record_source",
+      "datatype": "string",
+      "nullable": false,
+      "description": "Source system identifier"
+    },
+    {
+      "name": "loaded_timestamp",
+      "datatype": "timestamp",
+      "nullable": false,
+      "description": "When loaded into Gold layer"
+    }
+  ],
+  "measures": [
+    {
+      "name": "quantity",
+      "aggregation": "SUM",
+      "description": "Total units sold"
+    },
+    {
+      "name": "line_total",
+      "aggregation": "SUM",
+      "description": "Total line item revenue"
+    },
+    {
+      "name": "discount_applied",
+      "aggregation": "SUM",
+      "description": "Total line discounts"
+    },
+    {
+      "name": "profit",
+      "aggregation": "SUM",
+      "description": "Total profit (revenue - cost)"
+    }
+  ],
+  "calculated_measures": [
+    {
+      "name": "profit",
+      "formula": "(unit_price - product_cost) * quantity",
+      "description": "Line-level profit calculation"
+    }
+  ]
+}
